@@ -18,7 +18,7 @@ func main() {
 	flag.Parse()
 
 	http.HandleFunc("/health", HandleHealth)
-	http.Handle("/temp/", http.StripPrefix("/site/", http.FileServer(http.Dir("./site"))))
+	http.Handle("/temp/", http.StripPrefix("/temp/", http.FileServer(http.Dir("./temp"))))
 	l, e := net.Listen("tcp", ":"+*port)
 	if e != nil {
 		log.Fatal("listen error:", e)
